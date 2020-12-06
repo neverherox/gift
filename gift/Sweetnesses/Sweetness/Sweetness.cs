@@ -3,23 +3,19 @@ using System;
 
 namespace gift.Sweetnesses
 {
-    public abstract class Sweetness : ISugarable, IWeightable, ICaloriable, IPrintable
+    public abstract class Sweetness : IWeightable, IPrintable
     {
         private string name;
-        private double calories;
         private double weight;
-        private double sugar;
+        private SweetnessType sweetnessType;
         public string Name { get => name; set => name = value; }
-        public double Calories { get => calories; set => calories = value; }
         public double Weight { get => weight; set => weight = value; }
-        public double Sugar { get => sugar; set => sugar = value; }
+        public SweetnessType SweetnessType { get => sweetnessType; set => sweetnessType = value; }
 
-        public Sweetness(string name, double calories, double weight, double sugar)
+        public Sweetness(string name, double weight)
         {
             Name = name;
-            Calories = calories;
             Weight = weight;
-            Sugar = sugar;
         }
 
         public virtual void Print()

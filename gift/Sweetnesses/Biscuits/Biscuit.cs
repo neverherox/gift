@@ -8,14 +8,14 @@ namespace gift.Biscuits
         private FlourType flourType;
         public FlourType FlourType { get => flourType; protected set => flourType = value; }
 
-        public Biscuit(string name, double calories, double weight, double sugar) : base(name, calories, weight, sugar)
+        public Biscuit(string name, double weight) : base(name, weight)
         {
-
+            SweetnessType = SweetnessType.Biscuit;
         }
         public override void Print()
         {
             base.Print();
-            Console.Write("This biscuit is ");
+            Console.Write("This " + SweetnessType.ToString().ToLower() + " is ");
         }
     }
 }

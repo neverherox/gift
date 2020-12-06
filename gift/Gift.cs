@@ -4,13 +4,12 @@ using System.Linq;
 using gift.Functionality;
 using gift.NewFolder1;
 using gift.Sweetnesses.Interfaces;
-using System;
 
 namespace gift
 {
     public class Gift
     {
-        private Calculator calculator;
+        private WeightCalculator calculator;
         private Searcher searcher;
         private Sorter sorter;
         private Printer printer;
@@ -22,7 +21,7 @@ namespace gift
         {
             Sweetnesses = source;
             printer = new Printer();
-            calculator = new Calculator();
+            calculator = new WeightCalculator();
             searcher = new Searcher();
             sorter = new Sorter();
         }
@@ -36,14 +35,16 @@ namespace gift
         }
         public List<Sweetness> SearchBySugar(double min, double max)
         {
-            List<ISugarable> searched = searcher.SearchBySugar(Sweetnesses.ToList<ISugarable>(), min, max);
-            return searched.Cast<Sweetness>().ToList();
+            List<ISugarable> sugarables = sweetnesses.OfType<ISugarable>().ToList();
+            return searcher.SearchBySugar(sugarables, min, max).Cast<Sweetness>().ToList();
         }
 
         public void SortBySugar()
         {
-            List<ISugarable> sorted = sorter.SortBySugar(Sweetnesses.ToList<ISugarable>());
-            sweetnesses = sorted.Cast<Sweetness>().ToList();
+            List<ISugarable> sugarables = sweetnesses.OfType<ISugarable>().ToList();
+            sugarables = sorter.SortBySugar(sugarables);
+            sweetnesses.RemoveAll(x => x is ISugarable);
+            Sweetnesses.AddRange(sugarables.Cast<Sweetness>().ToList());
         }
     }
 }

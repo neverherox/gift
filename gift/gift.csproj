@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functionality\Calculator.cs" />
+    <Compile Include="Functionality\WeightCalculator.cs" />
     <Compile Include="Functionality\Printer.cs" />
     <Compile Include="Functionality\Sorter.cs" />
     <Compile Include="Sweetnesses\Biscuits\Biscuit.cs" />
@@ -59,11 +59,12 @@
     <Compile Include="Functionality\Searcher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sweetnesses\Interfaces\ICaloriable.cs" />
-    <Compile Include="Sweetnesses\Interfaces\IPrintable.cs" />
-    <Compile Include="Sweetnesses\Interfaces\ISugarable.cs" />
-    <Compile Include="Sweetnesses\Interfaces\IWeightable.cs" />
-    <Compile Include="Sweetnesses\Sweetness.cs" />
+    <Compile Include="Sweetnesses\Contracts\ICaloriable.cs" />
+    <Compile Include="Sweetnesses\Contracts\IPrintable.cs" />
+    <Compile Include="Sweetnesses\Contracts\ISugarable.cs" />
+    <Compile Include="Sweetnesses\Contracts\IWeightable.cs" />
+    <Compile Include="Sweetnesses\Sweetness\Sweetness.cs" />
+    <Compile Include="Sweetnesses\Sweetness\SweetnessType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

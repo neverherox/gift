@@ -14,22 +14,30 @@ namespace gift
         static void Main(string[] args)
         {
             List<Sweetness> sweetnesses = new List<Sweetness>();
-            sweetnesses.Add(new ChocolateCandy("Аленка", 10, 9, 8));
-            sweetnesses.Add(new LolipopCandy("Чупа-Чупс", 11, 12, 13));
-            sweetnesses.Add(new RyeBiscuit("Слодыч", 8, 5, 15));
-            sweetnesses.Add(new OatmealBiscuit("Сдобыч", 15, 16, 3));
-            sweetnesses.Add(new SoyBiscuit("Чоко-пай", 12, 25, 23));
+            sweetnesses.Add(new OatmealBiscuit("name1", 13, 25));
+            sweetnesses.Add(new RyeBiscuit("name2", 12, 10, 11));
+            sweetnesses.Add(new SoyBiscuit("name3", 10, 12));
+            sweetnesses.Add(new ChocolateCandy("name4", 2, 10, 18));
+            sweetnesses.Add(new LolipopCandy("name5", 11, 11, 11));
             Gift gift = new Gift(sweetnesses);
 
-            Console.WriteLine("Searched: ");
-            List<Sweetness> searched = gift.SearchBySugar(10, 20);
+            Console.WriteLine("Initial gift: ");
+            gift.PrintGift();
+
+
+            int min = 10, max = 15;
+            Console.WriteLine("\nSearched by sugar in: [" + min + "; " + max + "]");
+            List<Sweetness> searched = gift.SearchBySugar(min, max);
             Printer printer = new Printer();
             printer.Print(searched.ToList<IPrintable>());
 
-            Console.WriteLine("Gift is sorted by sugar: ");
+
+            Console.WriteLine("\nGift is sorted by sugar: ");
             gift.SortBySugar();
             gift.PrintGift();
 
+
+            Console.WriteLine("\nTotal weight: " + gift.CalculateGiftWeight());
 
             Console.ReadKey();
 

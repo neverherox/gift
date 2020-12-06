@@ -9,7 +9,7 @@ namespace gift.Functionality
     {
         public List<ISugarable> SortBySugar(List<ISugarable> sugarables)
         {
-            return sugarables.OrderBy(x => x.Sugar).ToList();
+           return sugarables.OrderBy(x => x.Sugar).ToList();
         }
         public List<IWeightable> SortByWeight(List<IWeightable> weightables)
         {

@@ -3,20 +3,27 @@ using System;
 
 namespace gift.Candy
 {
-    public abstract class Candy : Sweetness
+    public abstract class Candy : Sweetness, ISugarable, ICaloriable
     {
+        private double sugar;
+        private double calories;
         private CandyType candyType;
 
+        public double Sugar { get => sugar; set => sugar= value; }
+        public double Calories { get => calories; set => calories = value; }
+
         public CandyType CandyType { get => candyType;protected set => candyType = value; }
-
-        public Candy(string name, double calories, double weight, double sugar) : base(name, calories, weight, sugar)
+       
+        public Candy(string name, double weight, double calories, double sugar) : base(name, weight)
         {
-
+            SweetnessType = SweetnessType.Candy;
+            Calories = calories;
+            Sugar = sugar;
         }
         public override void Print()
         {
             base.Print();
-            Console.Write("This sweeet is ");
+            Console.Write("This " + SweetnessType.ToString().ToLower() + " is ");
         }
     }
 }

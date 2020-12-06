@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 namespace gift.Functionality
 {
-    public class Calculator
+    public class WeightCalculator
     {
         public double CalculateWeight(List<IWeightable> weightables)
         {
