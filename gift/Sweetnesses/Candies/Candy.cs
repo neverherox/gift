@@ -3,21 +3,18 @@ using System;
 
 namespace gift.Candy
 {
-    public abstract class Candy : Sweetness, ISugarable, ICaloriable
+    public abstract class Candy : Sweetness, ISugarable
     {
         private double sugar;
-        private double calories;
         private CandyType candyType;
 
         public double Sugar { get => sugar; set => sugar= value; }
-        public double Calories { get => calories; set => calories = value; }
 
         public CandyType CandyType { get => candyType;protected set => candyType = value; }
        
-        public Candy(string name, double weight, double calories, double sugar) : base(name, weight)
+        public Candy(string name, double weight, double calories, double sugar) : base(name, weight, calories)
         {
             SweetnessType = SweetnessType.Candy;
-            Calories = calories;
             Sugar = sugar;
         }
         public override void Print()

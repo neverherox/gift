@@ -4,47 +4,48 @@ using System.Linq;
 using gift.Functionality;
 using gift.NewFolder1;
 using gift.Sweetnesses.Interfaces;
+using gift.Functionality.Contracts;
 
 namespace gift
 {
     public class Gift
     {
-        private WeightCalculator calculator;
-        private Searcher searcher;
-        private Sorter sorter;
-        private Printer printer;
+        private Calculator calculator;
+        private ISearcher searcher;
+        private ISorter sorter;
+        private IPrinter printer;
 
-        private List<Sweetness> sweetnesses;
-        public List<Sweetness> Sweetnesses { get => sweetnesses; set => sweetnesses = value; }
+        private ICollection<Sweetness> sweetnesses;
+        public ICollection<Sweetness> Sweetnesses { get => sweetnesses; set => sweetnesses = value; }
 
-        public Gift(List<Sweetness> source)
+        public Gift(ICollection<Sweetness> source)
         {
             Sweetnesses = source;
             printer = new Printer();
-            calculator = new WeightCalculator();
+            calculator = new Calculator();
             searcher = new Searcher();
             sorter = new Sorter();
         }
         public void PrintGift()
         {
-            printer.Print(Sweetnesses.ToList<IPrintable>());
+            printer.Print((IReadOnlyCollection<IPrintable>)Sweetnesses);
         }
         public double CalculateGiftWeight()
         {
-            return calculator.CalculateWeight(Sweetnesses.ToList<IWeightable>());
+            return calculator.CalculateWeight((IReadOnlyCollection<IWeightable>)Sweetnesses);
         }
-        public List<Sweetness> SearchBySugar(double min, double max)
+        public ICollection<Sweetness> SearchBySugar(double min, double max)
         {
-            List<ISugarable> sugarables = sweetnesses.OfType<ISugarable>().ToList();
-            return searcher.SearchBySugar(sugarables, min, max).Cast<Sweetness>().ToList();
+            ICollection<ISugarable> sugarables = Sweetnesses.OfType<ISugarable>().ToList();
+            return searcher.SearchBySugar((IReadOnlyCollection<ISugarable>) sugarables, min, max).Cast<Sweetness>().ToList();
         }
-
-        public void SortBySugar()
+        public void SortBySugarAsc()
         {
-            List<ISugarable> sugarables = sweetnesses.OfType<ISugarable>().ToList();
-            sugarables = sorter.SortBySugar(sugarables);
-            sweetnesses.RemoveAll(x => x is ISugarable);
-            Sweetnesses.AddRange(sugarables.Cast<Sweetness>().ToList());
+            Sweetnesses = sorter.SortBySugarAsc((IReadOnlyCollection<Sweetness>)Sweetnesses);           
+        }
+        public void SortBySugarDesc()
+        {
+            Sweetnesses = sorter.SortBySugarDesc((IReadOnlyCollection<Sweetness>)Sweetnesses);
         }
     }
 }

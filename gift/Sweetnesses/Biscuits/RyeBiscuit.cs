@@ -2,17 +2,14 @@
 using System;
 namespace gift.Biscuits
 {
-    public class RyeBiscuit : Biscuit, ICaloriable, ISugarable
+    public class RyeBiscuit : Biscuit, ISugarable
     {
-        private double calories;
         private double sugar;
-        public double Calories { get => calories; set => calories = value; }
         public double Sugar { get => sugar; set => sugar = value; }
 
-        public RyeBiscuit(string name, double weight, double calories, double sugar) : base(name, weight)
+        public RyeBiscuit(string name, double weight,  double calories, double sugar) : base(name, weight, calories)
         {
             FlourType = FlourType.Rye;
-            Calories = calories;
             Sugar = sugar;
         }
   

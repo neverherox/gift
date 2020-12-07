@@ -4,7 +4,7 @@ namespace gift.Candy
 {
     public class ChocolateCandy : Candy
     {
-        public ChocolateCandy(string name, double calories, double weight, double sugar) : base(name, calories, weight, sugar)
+        public ChocolateCandy(string name, double weight, double calories, double sugar) : base(name, weight, calories, sugar)
         {
             CandyType = CandyType.Chocolate;
         }

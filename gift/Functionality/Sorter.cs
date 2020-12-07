@@ -1,23 +1,30 @@
-﻿using gift.Sweetnesses;
+﻿using gift.Functionality.Contracts;
+using gift.Sweetnesses;
 using System.Collections.Generic;
 using System.Linq;
 
 
 namespace gift.Functionality
 {
-    public class Sorter
+    public class Sorter : ISorter
     {
-        public List<ISugarable> SortBySugar(List<ISugarable> sugarables)
+        public ICollection<Sweetness> SortBySugarAsc(IReadOnlyCollection<Sweetness> sweetnesses)
         {
-           return sugarables.OrderBy(x => x.Sugar).ToList();
+           List<Sweetness> list = sweetnesses.Where(x => !HasSugar(x)).ToList();
+           List<Sweetness> sugarables = sweetnesses.Where(HasSugar).OrderBy(x => ((ISugarable)x).Sugar).ToList();
+           list.AddRange(sugarables);
+           return list;
         }
-        public List<IWeightable> SortByWeight(List<IWeightable> weightables)
+        public ICollection<Sweetness> SortBySugarDesc(IReadOnlyCollection<Sweetness> sweetnesses)
         {
-            return weightables.OrderBy(x => x.Weight).ToList();
+            List<Sweetness> list = sweetnesses.Where(x => !HasSugar(x)).ToList();
+            List<Sweetness> sugarables = sweetnesses.Where(HasSugar).OrderByDescending(x => ((ISugarable)x).Sugar).ToList();
+            list.AddRange(sugarables);
+            return list;
         }
-        public List<ICaloriable> SortByCalories(List<ICaloriable> caloriables)
+        private bool HasSugar(Sweetness sweetness)
         {
-            return caloriables.OrderBy(x => x.Calories).ToList();
+            return sweetness is ISugarable ? true : false;
         }
     }
 }

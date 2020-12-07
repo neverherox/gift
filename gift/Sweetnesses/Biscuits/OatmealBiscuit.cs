@@ -2,15 +2,11 @@
 using System;
 namespace gift.Biscuits
 {
-    public class OatmealBiscuit : Biscuit, ICaloriable
+    public class OatmealBiscuit : Biscuit
     {
-        private double calories;
-        public double Calories { get => calories; set => calories = value; }
-
-        public OatmealBiscuit(string name, double weight, double calories) : base(name, weight)
+        public OatmealBiscuit(string name, double weight, double calories) : base(name, weight, calories)
         {
             FlourType = FlourType.Oatmeal;
-            Calories = calories;
         }
 
         public override void Print()

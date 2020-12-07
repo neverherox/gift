@@ -7,7 +7,7 @@ namespace gift.Biscuits
         private double sugar;
         public double Sugar { get => sugar; set => sugar = value; }
 
-        public SoyBiscuit(string name,  double weight, double sugar) : base(name, weight)
+        public SoyBiscuit(string name,  double weight,double calories, double sugar) : base(name, weight, calories)
         {
             FlourType = FlourType.Soy;
             Sugar = sugar;

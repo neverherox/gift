@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functionality\WeightCalculator.cs" />
+    <Compile Include="Functionality\Contracts\ICalculator.cs" />
+    <Compile Include="Functionality\Contracts\IPrinter.cs" />
+    <Compile Include="Functionality\Contracts\ISearcher.cs" />
+    <Compile Include="Functionality\Contracts\ISorter.cs" />
+    <Compile Include="Functionality\Calculator.cs" />
     <Compile Include="Functionality\Printer.cs" />
     <Compile Include="Functionality\Sorter.cs" />
     <Compile Include="Sweetnesses\Biscuits\Biscuit.cs" />
@@ -69,5 +73,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

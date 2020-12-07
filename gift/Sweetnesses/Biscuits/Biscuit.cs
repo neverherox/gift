@@ -8,7 +8,7 @@ namespace gift.Biscuits
         private FlourType flourType;
         public FlourType FlourType { get => flourType; protected set => flourType = value; }
 
-        public Biscuit(string name, double weight) : base(name, weight)
+        public Biscuit(string name, double weight, double calories) : base(name, weight, calories)
         {
             SweetnessType = SweetnessType.Biscuit;
         }
