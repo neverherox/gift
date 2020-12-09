@@ -8,5 +8,9 @@ namespace gift.Functionality.Contracts
         ICollection<Sweetness> SortBySugarAsc(IReadOnlyCollection<Sweetness> sweetnesses);
         ICollection<Sweetness> SortBySugarDesc(IReadOnlyCollection<Sweetness> sweetnesses);
 
+        ICollection<Sweetness> SortByWeightAsc(IReadOnlyCollection<Sweetness> sweetnesses);
+        ICollection<Sweetness> SortByWeightDesc(IReadOnlyCollection<Sweetness> sweetnesses);
+
+
     }
 }

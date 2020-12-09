@@ -10,7 +10,7 @@ namespace gift
 {
     public class Gift
     {
-        private Calculator calculator;
+        private ICalculator calculator;
         private ISearcher searcher;
         private ISorter sorter;
         private IPrinter printer;
@@ -46,6 +46,14 @@ namespace gift
         public void SortBySugarDesc()
         {
             Sweetnesses = sorter.SortBySugarDesc((IReadOnlyCollection<Sweetness>)Sweetnesses);
+        }
+        public void SortByWeightAsc()
+        {
+            Sweetnesses = sorter.SortByWeightAsc((IReadOnlyCollection<Sweetness>)Sweetnesses);
+        }
+        public void SortByWeightDesc()
+        {
+            Sweetnesses = sorter.SortByWeightDesc((IReadOnlyCollection<Sweetness>)Sweetnesses);
         }
     }
 }
